@@ -26,15 +26,6 @@
 - (instancetype)init
 {
 	_showNativeButtons = YES;
-	if ((self = [super init])) {
-		_border = [CAShapeLayer layer];
-		_border.strokeColor = [UIColor blackColor].CGColor;
-		_border.fillColor = nil;
-		_border.lineDashPattern = @[@4, @2];
-
-		[self.layer addSublayer:_border];
-	}
-
 	return self;
 }
 
@@ -67,7 +58,7 @@
 
 		if ( [_viewMode  isEqual: @"portrait"] || UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
 			titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 24)];
-			[titleLabel setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height - 120)];
+			[titleLabel setCenter:CGPointMake(self.bounds.size.width/2, self.bounds.size.height)];
 
 			[titleLabel setText:@"x_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"];
 			[titleLabel setLineBreakMode:NSLineBreakByClipping];
@@ -147,8 +138,6 @@
 
 	}
 	_loaded = true;
-	_border.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
-	_border.frame = self.bounds;
 }
 
 - (void)setRotateClockwise:(BOOL)rotateClockwise {
