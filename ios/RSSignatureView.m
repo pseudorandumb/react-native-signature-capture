@@ -26,6 +26,10 @@
 - (instancetype)init
 {
 	_showNativeButtons = YES;
+	if ((self = [super init])) {
+        _border = [CAShapeLayer layer];
+        [self.layer addSublayer:_border];
+    }
 	return self;
 }
 
@@ -138,6 +142,8 @@
 
 	}
 	_loaded = true;
+	_border.path = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
+	_border.frame = self.bounds;
 }
 
 - (void)setRotateClockwise:(BOOL)rotateClockwise {
